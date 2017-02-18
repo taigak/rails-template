@@ -1,5 +1,7 @@
 require 'yaml'
 
+run 'rake db:create'
+
 # rspec
 if yes?("use rspec?(yes or no)")
   gem_group :development, :test do
