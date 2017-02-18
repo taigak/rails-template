@@ -10,7 +10,6 @@ mkdir sample
 cd sample
 git init
 git remote repo
-https://travis-ci.org/profile/taigak　でSync-accountしてね
 cd ../
 
 ```
