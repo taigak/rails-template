@@ -15,7 +15,7 @@ git remote add origin https://github.com/user_name/repo_name.git
 cd ../
 
 # rails new
-rails new app_name -m https://raw.githubusercontent.com/taigak/rails-template/master/template.rb
+rails new app_name -d postgresql -m https://raw.githubusercontent.com/taigak/rails-template/master/template.rb
 ```
 
 ## Author
