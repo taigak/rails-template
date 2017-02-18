@@ -3,17 +3,20 @@ Rails template
 
 
 ## Requirement
-
+* postgresql
 
 ## Usage
-mkdir sample
-cd sample
+```
+# need git-managed directory
+mkdir app_name
+cd app_name
 git init
-git remote repo
+git remote add origin https://github.com/user_name/repo_name.git
 cd ../
 
-```
-rails new appname -BT -m
+# rails new
+rails new app_name -m https://raw.githubusercontent.com/taigak/rails-template/master/template.rb
 ```
 
 ## Author
+taigak
