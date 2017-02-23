@@ -25,6 +25,7 @@ if yes?("use devise?(yes or no)")
 
   # Add is_admin column to User Migration
   # omniauthable
+  # Devise API
 end
 
 # rails_admin
@@ -40,6 +41,11 @@ if yes?("use cancancan?(yes or no)")
   gem 'cancancan'
   run_bundle
   generate 'cancan:ability'
+
+  if yes?("integrate cancancan, devise and rails_admin?")
+    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/.travis.yml -o .travis.yml'
+
+  end
   # if user && user.is_admin?
   #    can :manage, :all
   #  end
