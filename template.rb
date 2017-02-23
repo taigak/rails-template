@@ -43,7 +43,8 @@ if yes?("use cancancan?(yes or no)")
   if yes?("integrate cancancan, devise and rails_admin?(yes or no?)")
     require 'date'
     t = Time.now
-    run "curl https://raw.githubusercontent.com/taigak/rails-template/master/devise_create_users.rb -o db/migrate/#{t.strftime("%Y%m%d%H%M%S")}+_devise_create_users.rb"
+    run 'rm db/migrate/*'
+    run "curl https://raw.githubusercontent.com/taigak/rails-template/master/devise_create_users.rb -o db/migrate/#{t.strftime("%Y%m%d%H%M%S")}_devise_create_users.rb"
     run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/ability.rb -o app/models/ability.rb'
     run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/rails_admin.rb -o config/initializers/rails_admin.rb'
     run 'rake db:migrate:reset'
@@ -54,7 +55,7 @@ end
 if yes?("use travisCI?(yes or no)")
   git add: "."
   git commit: %Q{ -m 'auto commit by rails-template' }
-  run 'git push origin master'
+  run 'git push -f origin master'
 
   github_name = ask("Tell me your Github Account Name(Lower Case)")
   github_repo = ask("Tell me This Project's Github Repository Name")
