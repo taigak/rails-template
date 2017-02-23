@@ -43,9 +43,9 @@ if yes?("use cancancan?(yes or no)")
   if yes?("integrate cancancan, devise and rails_admin?(yes or no?)")
     require 'date'
     t = Time.now
-    run "curl https://raw.githubusercontent.com/taigak/rails-template/master/20170223123250_devise_create_users.rb -o .db/migrate/#{t.strftime("%Y%m%d%H%M%S")}+_devise_create_users.rb"
-    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/ability.rb -o /app/model/ability.tb'
-    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/rails_admin.rb -o /config/initializers/rails_admin.rb'
+    run "curl https://raw.githubusercontent.com/taigak/rails-template/master/devise_create_users.rb -o db/migrate/#{t.strftime("%Y%m%d%H%M%S")}+_devise_create_users.rb"
+    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/ability.rb -o app/models/ability.rb'
+    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/rails_admin.rb -o config/initializers/rails_admin.rb'
     run 'rake db:migrate:reset'
   end
 end
