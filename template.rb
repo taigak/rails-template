@@ -23,7 +23,6 @@ if yes?("use devise?(yes or no)")
   generate 'devise User'
   run 'rake db:migrate'
 
-  # Add is_admin column to User Migration
   # omniauthable
   # Devise API
 end
@@ -33,7 +32,6 @@ if yes?("use rails_admin?(yes or no)")
   gem 'rails_admin'
   run_bundle
   generate 'rails_admin:install'
-  # delete # referring devise and cancancan in initializer/rails_admin
 end
 
 # cancancan
@@ -42,17 +40,15 @@ if yes?("use cancancan?(yes or no)")
   run_bundle
   generate 'cancan:ability'
 
-  if yes?("integrate cancancan, devise and rails_admin?")
-    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/.travis.yml -o .travis.yml'
-
+  if yes?("integrate cancancan, devise and rails_admin?(yes or no?)")
+    require 'date'
+    t = Time.now
+    run "curl https://raw.githubusercontent.com/taigak/rails-template/master/20170223123250_devise_create_users.rb -o .db/migrate/#{t.strftime("%Y%m%d%H%M%S")}+_devise_create_users.rb"
+    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/ability.rb -o /app/model/ability.tb'
+    run 'curl https://raw.githubusercontent.com/taigak/rails-template/master/rails_admin.rb -o /config/initializers/rails_admin.rb'
+    run 'rake db:migrate:reset'
   end
-  # if user && user.is_admin?
-  #    can :manage, :all
-  #  end
 end
-
-# seed
-# add admin_user auto
 
 # travis
 if yes?("use travisCI?(yes or no)")
