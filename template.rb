@@ -55,9 +55,9 @@ end
 if yes?("use travisCI?(yes or no)")
   git add: "."
   git commit: %Q{ -m 'auto commit by rails-template' }
-  run 'git push -f origin master'
+  run 'git push origin master'
 
-  github_name = ask("Tell me your Github Account Name(Lower Case)")
+  github_name = ask("Tell me your Github Account Name(Lower Case)")#TODO
   github_repo = ask("Tell me This Project's Github Repository Name")
   run 'gem install travis'
   run 'travis sync'
@@ -106,5 +106,6 @@ if yes?("use travisCI?(yes or no)")
 
   git add: "."
   git commit: %Q{ -m 'auto commit by rails-template' }
+  run 'git push origin master'
 
 end
